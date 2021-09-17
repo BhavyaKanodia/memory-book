@@ -2,11 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-const app = express();
+import postRoutes from './routes/posts.js';
 
-app.use(express.json({ limit: '30mb', extended: true }));
-app.use(express.urlencoded({ limit: '30mb', extended: true }));
-app.use(cors());
+const app = express();
 
 const dbUrl =
   'mongodb+srv://memory-book:7tBjes5k3gOqSgeJ@cluster0.naavu.mongodb.net/memoryBook?retryWrites=true&w=majority';
@@ -21,3 +19,9 @@ mongoose
     console.log('Database Connection Error');
     console.log(error.message);
   });
+
+app.use(express.json({ limit: '30mb', extended: true }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
+app.use(cors());
+
+app.use('/posts', postRoutes);
