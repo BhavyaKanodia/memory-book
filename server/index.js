@@ -1,18 +1,18 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 import ExpressError from './utilities/ExpressError.js';
 import postRoutes from './routes/posts.js';
 
 const app = express();
+dotenv.config();
 
-const dbUrl =
-  'mongodb+srv://memory-book:7tBjes5k3gOqSgeJ@cluster0.naavu.mongodb.net/memoryBook?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(dbUrl)
+  .connect(process.env.DB_URL)
   .then(() => {
     app.listen(PORT, () => console.log(`Listening at port ${PORT}`));
   })
