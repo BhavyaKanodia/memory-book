@@ -24,7 +24,7 @@ const App = () => {
           Memory Book
         </Typography>
         <img
-          className={classes.img}
+          className={classes.image}
           src={memoryBook}
           alt="memory book"
           height="60"
@@ -33,6 +33,7 @@ const App = () => {
       <Grow in>
         <Container>
           <Grid
+            className={classes.cardsContainer}
             container
             justifyContent="space-between"
             alignItems="stretch"
