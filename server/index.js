@@ -27,6 +27,10 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to Memory Book');
+});
+
 app.get('*', (req, res, next) => {
   next(new ExpressError('Page not found', 404));
 });
